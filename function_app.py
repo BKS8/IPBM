@@ -10,14 +10,13 @@ app = func.FunctionApp()
 @app.timer_trigger(schedule="0 0 * * * *", arg_name="myTimer", run_on_startup=False, use_monitor=False)
 def timer_trigger1(myTimer: func.TimerRequest) -> None:
     connection = None
-    cursor = None  # Initialize cursor to None to prevent UnboundLocalError
+    cursor = None 
     try:
         if myTimer.past_due:
             logging.info('The timer is past due!')
 
         logging.info('Python timer trigger function executed.')
 
-        # Convert UTC time to IST time
         utc_now = datetime.datetime.utcnow()
         ist_tz = pytz.timezone('Asia/Kolkata')
         ist_now = utc_now.astimezone(ist_tz)
@@ -27,7 +26,6 @@ def timer_trigger1(myTimer: func.TimerRequest) -> None:
 
         logging.info(f"Current IST time: {ist_now}. Order hour: {order_hour}, Order date: {order_date}")
 
-        # Skip if order_hour is not between 10 and 23
         if order_hour < 10 or order_hour > 23:
             logging.info(f"Order hour {order_hour} is outside the valid range. Skipping execution.")
             return
@@ -49,12 +47,11 @@ def timer_trigger1(myTimer: func.TimerRequest) -> None:
             23: range(0, 4),
         }
 
-        # Database connection
         logging.info('Connecting to the database...')
         connection = mysql.connector.connect(
             host="pizza-sales.mysql.database.azure.com",
-            user="zinvert",
-            password="Santosh@09",
+            user="************",
+            password="**********",
             database="pizza_details"
         )
         cursor = connection.cursor()
