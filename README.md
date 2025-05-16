@@ -1,7 +1,7 @@
-# IPBM
+# IBPM
 Intelligent Business Process Management System with Automated Data Flow, Real-Time Analytics, and Predictive Insights
 
-# 🧠 Intelligent Business Process Management System (IPBM)
+# 🧠 Intelligent Business Process Management System (IBPM)
 
 A smart, end-to-end Business Process Management system that automates data workflows, generates real-time business analytics, and provides predictive insights using machine learning.
 
